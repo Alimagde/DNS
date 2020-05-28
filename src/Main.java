@@ -20,21 +20,25 @@ public class Main {
         root.start();
         tld.start();
         auth.start();
+        Scanner sc = new Scanner(System.in);
         try {
-
-            System.out.print("Enter site : ");
-            Scanner sc = new Scanner(System.in);
-            String site = sc.next();
-            Socket s = new Socket("localhost", 3030);
-            DataOutputStream out = new DataOutputStream(s.getOutputStream());
-            out.writeUTF(site);
-            DataInputStream in = new DataInputStream(s.getInputStream());
-
-            System.out.println(in.readUTF());
-
-
+            while (true) {
+                System.out.print("Enter site or q to quit: ");
+                String site = sc.next();
+                if (site.equals("q")) break;
+                Socket s = new Socket("localhost", 3030);
+                DataOutputStream out = new DataOutputStream(s.getOutputStream());
+                out.writeUTF(site);
+                DataInputStream in = new DataInputStream(s.getInputStream());
+                System.out.println(in.readUTF());
+            }
         } catch (Exception e) {
             System.out.println(e);
         }
+        local.stop();
+        root.stop();
+        tld.stop();
+        auth.stop();
+        System.out.println("Terminated");
     }
 }

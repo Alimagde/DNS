@@ -37,6 +37,7 @@ public class RootServerSearch implements Runnable {
             DataOutputStream nout = new DataOutputStream(nxt.getOutputStream());
             nout.writeUTF(site);
             out.writeUTF(nin.readUTF());
+            return;
         } catch (Exception e) {
             System.out.println(e);
         }

@@ -16,7 +16,7 @@ public class LocalServer implements Runnable {
 
             while (true) {
                 Socket con = socket.accept();
-                Thread s = new Thread(new LocalServerSearch(con),"Local server");
+                Thread s = new Thread(new LocalServerSearch(con), "Local server");
                 s.start();
             }
         } catch (Exception e) {

@@ -33,6 +33,7 @@ public class AuthServerSearch implements Runnable {
                 }
             }
             out.writeUTF("The site cannot be found");
+            return;
         } catch (Exception e) {
             System.out.println(e);
         }

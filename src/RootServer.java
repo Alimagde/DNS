@@ -10,6 +10,7 @@ public class RootServer implements Runnable {
         ServerSocket socket;
         try {
             socket = new ServerSocket(4040);
+
             while (true) {
                 Socket con = socket.accept();
                 Thread s = new Thread(new RootServerSearch(con),"Root server");

@@ -10,9 +10,10 @@ public class TldServer implements Runnable {
         ServerSocket socket;
         try {
             socket = new ServerSocket(5050);
+
             while (true) {
                 Socket con = socket.accept();
-                Thread s = new Thread(new RootServerSearch(con),"Tld server");
+                Thread s = new Thread(new TldServerSearch(con), "Tld server");
                 s.start();
             }
         } catch (Exception e) {
